@@ -7,13 +7,15 @@ public class Array {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		int[] myIntArray = {3, 9, 23, 64, 2, 8, 28, 93};
+		int[] myIntArray = {3, 9, 23, 64, 2, 8, 28, 93, 74};
 		int arraySize=myIntArray.length;
 		int lastFirstValue =0;
 		int ageAverage = 0;
 		int totalNumberOfCharInString=0;
 		int[] nameLengths = new int[10];
 		int sumOfAllNamesChar=0;
+		double[] myFirstDoubleArray = {3.0, 9.4, 23.5, 64.1, 2.2, 8.4, 28.5, 93.4};
+		double[] mySecondDoubleArray = {14.0,32.0,23.7,56.3,4.9,1.0};
 		
 		
 		
@@ -24,15 +26,12 @@ public class Array {
 		lastFirstValue = myIntArray[arraySize-1]-myIntArray[0];
 		System.out.println("When I subtract the value of the first element in the array from the value in the last element of the array I will get "+lastFirstValue);
 		
-		myIntArray = Arrays.copyOf(myIntArray, myIntArray.length + 1);
-		myIntArray[arraySize]=91;
-		System.out.println("New length: " + myIntArray.length + " & my last number in the array that I added was " +myIntArray[arraySize]);
 		
 		
 		for (int i=0;i<myIntArray.length;i++)
 		{
 			ageAverage+=myIntArray[i];
-			System.out.println("Avg "+ageAverage);
+		
 		}
 		System.out.println("Avg "+ageAverage);
 		System.out.println("The new average age for #"+myIntArray.length + " of members is " +ageAverage/arraySize);
@@ -40,7 +39,7 @@ public class Array {
 		for (int i=0;i<myStringArray.length;i++)
 		{
 			totalNumberOfCharInString+=myStringArray[i].length();
-			System.out.println("Avg "+ageAverage);
+			
 		}
 		
 		System.out.println("The average number of characters of "+myStringArray.length + " is " +totalNumberOfCharInString/myStringArray.length);
@@ -75,9 +74,9 @@ public class Array {
 		System.out.println("The sum of all the elements in the array "+sumOfAllNamesChar);
 		System.out.println(print("Hello",3));
 		System.out.println(printFullName("Jacob","Truba"));
-		System.out.println("Is collection of numbers in array greater then 100 "+checkSumOfNumbers());
-		System.out.println(checkDoubleAverage());
-		System.out.println(checkWhichDoubleAverageArrayIsBiggerInTheFirstArray());
+		System.out.println("Is collection of numbers in array greater then 100 "+checkSumOfNumbers(myIntArray));
+		System.out.println(checkDoubleAverage(myFirstDoubleArray));
+		System.out.println(checkWhichDoubleAverageArrayIsBiggerInTheFirstArray(myFirstDoubleArray,mySecondDoubleArray));
 		System.out.println(willBuyDrink(true,12.50));
 		System.out.println(willBuyDrink(true,9.50));
 		System.out.println(willBuyDrink(false,12.50));
@@ -106,17 +105,16 @@ public class Array {
 		return fullName;
 	}
 	
-	public static boolean checkSumOfNumbers()
+	public static boolean checkSumOfNumbers(int [] numbers)
 	{
 		
 		boolean isSumGreaterThen100 = false;
 		int totalCount=0;
 		
-		int[] myIntArray = {3, 9, 23, 64, 2, 8, 28, 93};
 		
-		for (int i=0;i<myIntArray.length;i++)
+		for (int number:numbers)
 		{
-			totalCount+=myIntArray[i];
+			totalCount+=number;
 			
 		}
 		
@@ -129,36 +127,35 @@ public class Array {
 		
 	}
 	
-	public static double checkDoubleAverage()
+	public static double checkDoubleAverage(double set [])
 	{
 		double totalAverage=0;
-		double [] myFirstDoubleArray = {9.0,3.0,2.7,6.3,4.9};
-		for (int i=0;i<myFirstDoubleArray.length;i++)
+
+		for (double number:set)
 		{
-			totalAverage+=myFirstDoubleArray[i];
+			totalAverage+=number;
 		}
 		System.out.print("Average number for double array is ");
-		return totalAverage/myFirstDoubleArray.length;
+		return totalAverage/set.length;
 	}
 
-	public static boolean checkWhichDoubleAverageArrayIsBiggerInTheFirstArray()
+	public static boolean checkWhichDoubleAverageArrayIsBiggerInTheFirstArray(double set1[],double set2[])
 	{
 		boolean firstArrayGreater=false;
 		double totalAverage1=0;
 		double totalAverage2=0;
-		double [] myFirstDoubleArray = {9.0,3.0,2.7,6.3,4.9};
-		double [] mySecondDoubleArray = {14.0,32.0,23.7,56.3,4.9,1.0};
-		for (int i=0;i<myFirstDoubleArray.length;i++)
+		
+		for (double firstNumberSet:set1)
 		{
-			totalAverage1+=myFirstDoubleArray[i];
+			totalAverage1+=firstNumberSet;
 		}
 		
-		for (int i=0;i<mySecondDoubleArray.length;i++)
+		for (double secondNumberSet:set2)
 		{
-			totalAverage2+=mySecondDoubleArray[i];
+			totalAverage2+=secondNumberSet;
 		}
 		
-		if(totalAverage1/myFirstDoubleArray.length>totalAverage2/mySecondDoubleArray.length)
+		if(totalAverage1/set1.length>totalAverage2/set2.length)
 		{
 			firstArrayGreater=true;
 		}
@@ -175,7 +172,7 @@ public class Array {
 			status=true;
 		}
 		
-		System.out.println("Is it hot outside and if moneyInPocket is greater than 10.50 ");
+		System.out.println("Is it hot outside "+status +" and if moneyInPocket is greater than 10.50 the final outcome will be");
 		
 		return status;
 	}
