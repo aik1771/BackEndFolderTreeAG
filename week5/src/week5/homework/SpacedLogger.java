@@ -6,13 +6,22 @@ public class SpacedLogger implements Logger {
 	public void Log(String x) {
 		// TODO Auto-generated method stub
 		
+		
 		String[] array = x.split("");
 		String temp=" ";
 		for(int i=0;i<array.length;i++)
 		{
 			temp+=array[i]+" ";
 		}
-		System.out.println("***"+temp.trim()+"***");
+		
+		int makeStars=("***"+temp.trim()+"***").length();
+		String starLine="";
+		for(int i=0;i<makeStars;i++)
+		{
+			starLine+="*";
+		}
+		System.out.println(starLine+"\n"+"***"+temp.trim()+"***"+"\n"+starLine+"\n");
+		
 		
 	}
 
@@ -25,7 +34,14 @@ public class SpacedLogger implements Logger {
 		{
 			temp+=array[i]+" ";
 		}
-		System.out.println("***Error: "+temp.trim()+"***");
+		int makeStars=("***"+temp.trim()+"***").length();
+		String starLine="";
+		for(int i=0;i<makeStars;i++)
+		{
+			starLine+="*";
+		}
+		System.out.println(starLine+"\n"+"***"+temp.trim()+"***"+"\n"+starLine+"\n");
+		
 		
 	}
 
