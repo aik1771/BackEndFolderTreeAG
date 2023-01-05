@@ -1,1 +1,9 @@
 /.metadata/
+.settings/
+target/
+Solutions
+pom.xml
+DbConnection.java
+
+ProjectsApp.java
+DbException.java
